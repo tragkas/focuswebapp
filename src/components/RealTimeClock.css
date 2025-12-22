@@ -1,0 +1,14 @@
+.real-time-clock {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4vw;
+    /* Very tight gap */
+    width: 100%;
+    height: 100%;
+}
+
+.clock-separator {
+    display: none;
+    /* No separator in 2-card layout logic if we just have 2 cards */
+}

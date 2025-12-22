@@ -1,0 +1,43 @@
+.flip-card {
+    position: relative;
+    width: var(--card-width);
+    height: var(--card-height);
+    font-size: var(--card-font-size);
+    font-weight: 700;
+    line-height: 1;
+    /* Standard line height to match font size */
+    border-radius: var(--card-radius);
+    background: var(--card-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.flip-card span {
+    z-index: 2;
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: -1vw;
+    /* Visual Center Fix: Move up slightly to counter-balance high baseline */
+    transform: translateY(-5%);
+
+    /* Gradient Text Effect */
+    background: linear-gradient(to bottom, #ffffff 0%, #b3b3b3 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+/* Semi-transparent line to mimic the split flap look */
+.flip-card::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 10;
+    transform: translateY(-50%);
+}

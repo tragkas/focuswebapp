@@ -1,0 +1,190 @@
+.pomodoro-timer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.timer-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3vw;
+    /* Very tight gap */
+    margin-bottom: 0;
+    z-index: 1;
+}
+
+/* Floating Control Dock - ABSOLUTE OVERLAY */
+.control-dock {
+    position: absolute;
+    /* Moved UP: was 15vh, now 20vh to be closer to clock */
+    bottom: 20vh;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+
+    background: rgba(26, 26, 26, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 10px 20px;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Settings Pill - ABSOLUTE OVERLAY (Below Dock) */
+.settings-pill {
+    position: absolute;
+    bottom: 14vh;
+    /* Moved UP closer to dock (was 8vh) */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+
+    background: rgba(26, 26, 26, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 10px 30px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+
+    /* Hidden by default state */
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -10px);
+    /* Slide up slightly when hidden */
+
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Show state */
+.settings-pill.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, 0);
+}
+
+
+/* Content styles */
+.dock-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-right: 10px;
+}
+
+.mode-label {
+    font-size: 0.7rem;
+    color: #00ff88;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.status-label {
+    font-size: 0.7rem;
+    color: #666;
+}
+
+.dock-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dock-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s, background 0.2s;
+}
+
+.dock-btn:active {
+    transform: scale(0.9);
+}
+
+.main-action {
+    width: 50px;
+    height: 50px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+.main-action svg {
+    fill: black;
+    stroke: black;
+    margin-left: 2px;
+}
+
+.main-action svg.lucide-pause {
+    margin-left: 0;
+}
+
+.secondary-action {
+    width: 40px;
+    height: 40px;
+    color: #666;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.secondary-action:hover,
+.secondary-action.active {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.setting-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.setting-group label {
+    font-size: 0.6rem;
+    color: #444;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.setting-control {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.setting-control button {
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    font-size: 0.8rem;
+    color: #888;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.setting-control button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
+}
+
+.setting-divider {
+    width: 1px;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.1);
+}
