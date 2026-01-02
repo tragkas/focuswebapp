@@ -35,6 +35,18 @@
   }
 }
 
+/* Portrait Mode Logic or Narrow Screens */
+@media (orientation: portrait),
+(max-width: 768px) {
+  :root {
+    /* Stacked layout sizing */
+    --card-width: 85vw;
+    --card-height: 38vh;
+    --card-font-size: 32vh;
+    --card-radius: 6vw;
+  }
+}
+
 
 
 

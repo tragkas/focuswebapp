@@ -45,6 +45,16 @@
   align-items: center;
 }
 
+@media (orientation: portrait),
+(max-width: 768px) {
+  .bottom-controls {
+    bottom: 30px;
+    right: 50%;
+    transform: translateX(50%);
+    /* Center it at the bottom */
+  }
+}
+
 .app-container.idle .bottom-controls.fade-element {
   transform: translateY(10px);
 }

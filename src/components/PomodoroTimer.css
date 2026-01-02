@@ -39,6 +39,16 @@
     transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
+@media (orientation: portrait),
+(max-width: 768px) {
+    .control-dock {
+        bottom: 25vh;
+        padding: 12px 24px;
+        width: 80%;
+        justify-content: center;
+    }
+}
+
 /* Settings Pill - ABSOLUTE OVERLAY (Below Dock) */
 .settings-pill {
     position: absolute;
@@ -64,6 +74,15 @@
     /* Slide up slightly when hidden */
 
     transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+@media (orientation: portrait),
+(max-width: 768px) {
+    .settings-pill {
+        bottom: 18vh;
+        width: 70%;
+        justify-content: center;
+    }
 }
 
 /* Show state */

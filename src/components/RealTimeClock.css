@@ -8,6 +8,14 @@
     height: 100%;
 }
 
+@media (orientation: portrait),
+(max-width: 768px) {
+    .real-time-clock {
+        flex-direction: column;
+        gap: 3vh;
+    }
+}
+
 .clock-separator {
     display: none;
     /* No separator in 2-card layout logic if we just have 2 cards */
