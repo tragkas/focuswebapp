@@ -105,7 +105,19 @@
   opacity: 0;
   pointer-events: none;
   /* Move down slightly while hiding */
+  /* Move down slightly while hiding */
   transform: translate(-50%, 20px) !important;
+}
+
+@media (orientation: portrait),
+(max-width: 768px) {
+
+  .app-container.idle .control-dock,
+  .app-container.idle .settings-pill {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    transform: translateX(-50%) !important;
+  }
 }
 
 /* Ensure they are visible when NOT idle */
