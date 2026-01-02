@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
-import { Play, Pause, RotateCcw, Settings, Menu, X } from 'lucide-react';
+import { Play, Pause, RotateCcw, Settings, Menu, X, Brain, Maximize, Minimize } from 'lucide-react';
 import FlipCard from './FlipCard';
 import './PomodoroTimer.css';
 
-const PomodoroTimer = () => {
+const PomodoroTimer = ({ toggleView, toggleFullscreen, isFullscreen }) => {
     const [focusLength, setFocusLength] = useState(25);
     const [breakLength, setBreakLength] = useState(5);
     const [showSettings, setShowSettings] = useState(false);
@@ -83,6 +83,15 @@ const PomodoroTimer = () => {
 
     return (
         <div className="pomodoro-timer">
+            {/* Top Right Menu Button for Mobile */}
+            <button
+                className="top-menu-btn"
+                onClick={() => setShowSettings(true)}
+                aria-label="Open Settings"
+            >
+                <Menu size={24} color="white" />
+            </button>
+
             <div className="timer-display">
                 {/* 2 Cards Only: MM and SS */}
                 <FlipCard digit={minutes} />
@@ -106,12 +115,8 @@ const PomodoroTimer = () => {
                         <RotateCcw size={20} />
                     </button>
 
-                    <button
-                        className={`dock-btn secondary-action ${showSettings ? 'active' : ''}`}
-                        onClick={() => setShowSettings(true)}
-                    >
-                        {/* Use Menu icon for "Sandwich" menu feel */}
-                        <Menu size={20} />
+                    <button className="dock-btn secondary-action" onClick={resetTimer}>
+                        <RotateCcw size={20} />
                     </button>
                 </div>
             </div>
@@ -126,6 +131,21 @@ const PomodoroTimer = () => {
                 </div>
 
                 <div className="overlay-content">
+                    {/* Menu Actions */}
+                    <div className="menu-actions-large">
+                        <button className="menu-action-btn" onClick={toggleView}>
+                            <Brain size={32} />
+                            <span>Switch to Clock</span>
+                        </button>
+
+                        <button className="menu-action-btn" onClick={toggleFullscreen}>
+                            {isFullscreen ? <Minimize size={32} /> : <Maximize size={32} />}
+                            <span>{isFullscreen ? 'Exit Fullscreen' : 'Fullscreen'}</span>
+                        </button>
+                    </div>
+
+                    <div className="setting-divider-horizontal"></div>
+
                     <div className="setting-group-large">
                         <label>FOCUS LENGTH (MIN)</label>
                         <div className="setting-control-large">

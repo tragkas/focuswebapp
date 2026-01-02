@@ -67,7 +67,14 @@ function App() {
       {/* Top Nav REMOVED per user request */}
 
       <main className="clock-container">
-        {view === 'clock' ? <RealTimeClock /> : <PomodoroTimer />}
+        {view === 'clock' ?
+          <RealTimeClock /> :
+          <PomodoroTimer
+            toggleView={toggleView}
+            toggleFullscreen={toggleFullscreen}
+            isFullscreen={isFullscreen}
+          />
+        }
       </main>
 
       {/* Bottom Right Controls */}
