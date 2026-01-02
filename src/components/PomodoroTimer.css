@@ -18,6 +18,14 @@
     z-index: 1;
 }
 
+@media (orientation: portrait),
+(max-width: 768px) {
+    .timer-display {
+        flex-direction: column;
+        gap: 2vh;
+    }
+}
+
 /* Floating Control Dock - ABSOLUTE OVERLAY */
 .control-dock {
     position: absolute;
@@ -206,4 +214,118 @@
     width: 1px;
     height: 30px;
     background: rgba(255, 255, 255, 0.1);
+}
+
+/* 
+   MOBILE SETTINGS OVERLAY
+   Replaces the pill with a full-screen or large shelf style
+*/
+.mobile-settings-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(20px);
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    /* Slide up from bottom */
+
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(100%);
+    transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobile-settings-overlay.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.overlay-header {
+    width: 100%;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.overlay-header h2 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: white;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: #999;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.close-btn:hover {
+    color: white;
+}
+
+.overlay-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    padding-bottom: 10vh;
+    /* Lift up from bottom */
+}
+
+.setting-group-large {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.setting-group-large label {
+    font-size: 0.9rem;
+    color: #666;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.setting-control-large {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    font-size: 2.5rem;
+    font-weight: 700;
+    font-family: 'Oswald', sans-serif;
+    /* Match clock font */
+}
+
+.setting-control-large button {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.setting-control-large button:hover,
+.setting-control-large button:active {
+    background: white;
+    color: black;
+    transform: scale(1.1);
 }

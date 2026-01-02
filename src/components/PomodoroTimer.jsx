@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Play, Pause, RotateCcw, Settings } from 'lucide-react';
+import { Play, Pause, RotateCcw, Settings, Menu, X } from 'lucide-react';
 import FlipCard from './FlipCard';
 import './PomodoroTimer.css';
 
@@ -108,30 +108,40 @@ const PomodoroTimer = () => {
 
                     <button
                         className={`dock-btn secondary-action ${showSettings ? 'active' : ''}`}
-                        onClick={() => setShowSettings(!showSettings)}
+                        onClick={() => setShowSettings(true)}
                     >
-                        <Settings size={20} />
+                        {/* Use Menu icon for "Sandwich" menu feel */}
+                        <Menu size={20} />
                     </button>
                 </div>
             </div>
 
-            {/* Settings Pill - Conditionally Hidden/Shown */}
-            <div className={`settings-pill ${showSettings ? 'visible' : ''}`}>
-                <div className="setting-group">
-                    <label>FOCUS LENGTH</label>
-                    <div className="setting-control">
-                        <button onClick={() => setFocusLength(f => Math.max(1, f - 1))}>-</button>
-                        <span>{focusLength}</span>
-                        <button onClick={() => setFocusLength(f => f + 1)}>+</button>
-                    </div>
+            {/* Mobile Settings Overlay (Sandwich Menu) */}
+            <div className={`mobile-settings-overlay ${showSettings ? 'visible' : ''}`}>
+                <div className="overlay-header">
+                    <h2>Settings</h2>
+                    <button className="close-btn" onClick={() => setShowSettings(false)}>
+                        <X size={24} />
+                    </button>
                 </div>
-                <div className="setting-divider"></div>
-                <div className="setting-group">
-                    <label>BREAK LENGTH</label>
-                    <div className="setting-control">
-                        <button onClick={() => setBreakLength(d => Math.max(1, d - 1))}>-</button>
-                        <span>{breakLength}</span>
-                        <button onClick={() => setBreakLength(d => d + 1)}>+</button>
+
+                <div className="overlay-content">
+                    <div className="setting-group-large">
+                        <label>FOCUS LENGTH (MIN)</label>
+                        <div className="setting-control-large">
+                            <button onClick={() => setFocusLength(f => Math.max(1, f - 1))}>-</button>
+                            <span>{focusLength}</span>
+                            <button onClick={() => setFocusLength(f => f + 1)}>+</button>
+                        </div>
+                    </div>
+
+                    <div className="setting-group-large">
+                        <label>BREAK LENGTH (MIN)</label>
+                        <div className="setting-control-large">
+                            <button onClick={() => setBreakLength(d => Math.max(1, d - 1))}>-</button>
+                            <span>{breakLength}</span>
+                            <button onClick={() => setBreakLength(d => d + 1)}>+</button>
+                        </div>
                     </div>
                 </div>
             </div>
