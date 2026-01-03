@@ -106,6 +106,11 @@ function App() {
               {isFullscreen ? <Minimize size={32} /> : <Maximize size={32} />}
               <span>{isFullscreen ? 'Exit Fullscreen' : 'Fullscreen'}</span>
             </button>
+
+            <button className="menu-action-btn" onClick={() => setShowMenu(false)}>
+              <X size={32} />
+              <span>Exit Menu</span>
+            </button>
           </div>
 
           {/* Settings - Only visible in Pomodoro Mode */}
